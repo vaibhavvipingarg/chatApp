@@ -1,7 +1,7 @@
 /**
  * Created by vgarg on 4/16/2015.
  */
-(function(){
+$(function(){
     var chatId = Number(window.location.pathname.match(/\/chat\/(\d+)$/)[1]);
     var socket = io();
 
@@ -45,37 +45,71 @@
         noMessagesImage = $("#noMessagesImage");
 
 
-    socket.on('joinChat', function(people){
-        if (people.number === 0) {
+    socket.on('joinChat', function(data){
+        showMessage('connected', {});
+        if (data.length === 0) {
             //make signup and invite more people
             var chatUrl = '' + chatId;
-            showMessage('invitePeople', {chatUrl: chatUrl});
+            loginForm.on('submit', function(e){
+                e.preventDefault();
+                name = $.trim(yourName.val());
+                if(name.length < 1){
+                    alert("Please enter a nick name longer than 1 character!");
+                    return;
+                }
+                email = yourEmail.val();
+                if(!isValid(email)){
+                    alert("Wrong e-mail format!");
+                }
+                else {
+                    showMessage('invitePeople', {chatUrl: chatUrl});
+                    socket.emit('login', {user: name, avatar: email, chatId: chatId});
+                }
+            });
+
+
         } else {
             //display all the people already in the chat
-            var peopleInChat = people.peopleInChat;
+            var peopleInChat = data;
             showMessage('showPeople', peopleInChat);
+            loginForm.on('submit', function(e){
+                e.preventDefault();
+                name = $.trim(yourName.val());
+                if(name.length < 1){
+                    alert("Please enter a nick name longer than 1 character!");
+                    return;
+                }
+                email = yourEmail.val();
+                if(!isValid(email)){
+                    alert("Wrong e-mail format!");
+                }
+                else {
+                    showMessage('startChat', {chatUrl: chatUrl});
+                    socket.emit('login', {user: name, avatar: email, chatId: chatId});
+                }
+            });
             //make the user signup, once done, then redirect
         }
-        loginForm.on('submit', function(e){
-            e.preventDefault();
-            name = $.trim(yourName.val());
-            if(name.length < 1){
-                alert("Please enter a nick name longer than 1 character!");
-                return;
-            }
-            email = yourEmail.val();
-            if(!isValid(email)){
-                alert("Wrong e-mail format!");
-            }
-            else {
-                socket.emit('login', {user: name, avatar: email, chatId: chatId});
-            }
-        });
+
     });
+
+    function isValid(thatemail) {
+
+        var re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+        return re.test(thatemail);
+    }
 
     function showMessage(msg, data){
         switch(msg){
         case 'invitePeople':
+            // Set the invite link content
+            $("#link").text(window.location.href);
+            onConnect.fadeOut(1200, function(){
+                inviteSomebody.fadeIn(1200);
+            });
+            break;
+
+            case 'connected':
             section.children().css('display', 'none');
             onConnect.fadeIn(1200);
             //show share link message.. data.chatUrl
@@ -88,4 +122,4 @@
     function peopleInChat(people){
 
     }
-})();
+});

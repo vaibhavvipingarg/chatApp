@@ -21,12 +21,19 @@ module.exports = function(app, io){
         socket.on('load', function(chatId){
            // get the chat Id and find if there are already users in this chatId
             var chatRoom = findClientsSocket(io, chatId);
-            if (chatRoom.length === 0){
-                socket.emit('joinChat' , {number: 0});
-            } else {
-                socket.emit('joinChat' , {number: chatRoom.length,
-                                          peopleInChat: chatRoom});
+            var temp = {
+                number: 0,
+                peopleInChat : []
             }
+            for (var i = 0; i< chatRoom.length; i++){
+                temp.number = temp.number + 1;
+                var temp2 = {};
+                temp2.user = chatRoom[i].username;
+                temp2.avatar = chatRoom[i].avatar;
+                temp2.chatId = chatId;
+                temp.peopleInChat.push(temp2);
+            }
+            socket.emit('joinChat' , temp);
         });
 
         socket.on('login', function(user){
@@ -41,9 +48,9 @@ module.exports = function(app, io){
                 avatars = [];
 
             for (var i = 0; i< chatRoom.length; i++){
-                usernames.push(room[i].username);
+                usernames.push(chatRoom[i].username);
                 usernames.push(socket.username);
-                avatars.push(room[i].avatar);
+                avatars.push(chatRoom[i].avatar);
                 avatars.push(socket.avatar);
             }
 
