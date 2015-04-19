@@ -78,7 +78,9 @@ body {
 
 
 /* ------------ Section styles ------------ */
-
+.section{
+    margin-top: 100px;
+}
 
 
 /* ------ Home ------ */

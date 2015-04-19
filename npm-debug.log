@@ -1,0 +1,89 @@
+0 info it worked if it ends with ok
+1 verbose cli [ 'node', '/usr/local/bin/npm', 'install' ]
+2 info using npm@1.4.23
+3 info using node@v0.10.31
+4 warn package.json chatApp@0.0.1 No repository field.
+5 warn package.json chatApp@0.0.1 No README data
+6 verbose readDependencies using package.json deps
+7 verbose install where, deps [ '/Users/vaibhavgarg/chatApp',
+7 verbose install   [ 'ejs', 'express', 'gravatar', 'socket.io', 'node-inspector' ] ]
+8 info preinstall chatApp@0.0.1
+9 verbose readDependencies using package.json deps
+10 verbose already installed skipping express@^4.8.2 /Users/vaibhavgarg/chatApp
+11 verbose already installed skipping gravatar@~1.0.6 /Users/vaibhavgarg/chatApp
+12 verbose already installed skipping socket.io@^1.0.6 /Users/vaibhavgarg/chatApp
+13 verbose cache add [ 'node-inspector@0.10.38', null ]
+14 verbose cache add name=undefined spec="node-inspector@0.10.38" args=["node-inspector@0.10.38",null]
+15 verbose parsed url { protocol: null,
+15 verbose parsed url   slashes: null,
+15 verbose parsed url   auth: null,
+15 verbose parsed url   host: null,
+15 verbose parsed url   port: null,
+15 verbose parsed url   hostname: null,
+15 verbose parsed url   hash: null,
+15 verbose parsed url   search: null,
+15 verbose parsed url   query: null,
+15 verbose parsed url   pathname: 'node-inspector@0.10.38',
+15 verbose parsed url   path: 'node-inspector@0.10.38',
+15 verbose parsed url   href: 'node-inspector@0.10.38' }
+16 verbose already installed skipping ejs@^1.0.0 /Users/vaibhavgarg/chatApp
+17 verbose cache add name="node-inspector" spec="0.10.38" args=["node-inspector","0.10.38"]
+18 verbose parsed url { protocol: null,
+18 verbose parsed url   slashes: null,
+18 verbose parsed url   auth: null,
+18 verbose parsed url   host: null,
+18 verbose parsed url   port: null,
+18 verbose parsed url   hostname: null,
+18 verbose parsed url   hash: null,
+18 verbose parsed url   search: null,
+18 verbose parsed url   query: null,
+18 verbose parsed url   pathname: '0.10.38',
+18 verbose parsed url   path: '0.10.38',
+18 verbose parsed url   href: '0.10.38' }
+19 verbose addNamed [ 'node-inspector', '0.10.38' ]
+20 verbose addNamed [ '0.10.38', '0.10.38' ]
+21 silly lockFile 26428793-node-inspector-0-10-38 node-inspector@0.10.38
+22 verbose lock node-inspector@0.10.38 /Users/vaibhavgarg/.npm/26428793-node-inspector-0-10-38.lock
+23 verbose request where is /node-inspector
+24 verbose request registry https://registry.npmjs.org/
+25 verbose request id a997319eca4bb039
+26 verbose url raw /node-inspector
+27 verbose url resolving [ 'https://registry.npmjs.org/', './node-inspector' ]
+28 verbose url resolved https://registry.npmjs.org/node-inspector
+29 verbose request where is https://registry.npmjs.org/node-inspector
+30 info trying registry request attempt 1 at 00:06:46
+31 verbose etag "67FNQLRHYZEP1XKLJF939EICN"
+32 http GET https://registry.npmjs.org/node-inspector
+33 http 304 https://registry.npmjs.org/node-inspector
+34 silly registry.get cb [ 304,
+34 silly registry.get   { date: 'Sun, 19 Apr 2015 04:06:47 GMT',
+34 silly registry.get     server: 'Apache',
+34 silly registry.get     via: '1.1 varnish',
+34 silly registry.get     'last-modified': 'Sun, 19 Apr 2015 04:06:47 GMT',
+34 silly registry.get     'cache-control': 'max-age=60',
+34 silly registry.get     etag: '"67FNQLRHYZEP1XKLJF939EICN"',
+34 silly registry.get     age: '0',
+34 silly registry.get     'x-served-by': 'cache-atl6220-ATL',
+34 silly registry.get     'x-cache': 'HIT',
+34 silly registry.get     'x-cache-hits': '1',
+34 silly registry.get     'x-timer': 'S1429416407.011521,VS0,VE114',
+34 silly registry.get     vary: 'Accept',
+34 silly registry.get     'content-length': '0',
+34 silly registry.get     'keep-alive': 'timeout=10, max=50',
+34 silly registry.get     connection: 'Keep-Alive' } ]
+35 verbose etag https://registry.npmjs.org/node-inspector from cache
+36 silly lockFile 26428793-node-inspector-0-10-38 node-inspector@0.10.38
+37 silly lockFile 26428793-node-inspector-0-10-38 node-inspector@0.10.38
+38 error Error: version not found: node-inspector@0.10.38
+38 error     at /usr/local/lib/node_modules/npm/lib/cache/add-named.js:125:12
+38 error     at saved (/usr/local/lib/node_modules/npm/node_modules/npm-registry-client/lib/get.js:167:7)
+38 error     at Object.oncomplete (fs.js:107:15)
+39 error If you need help, you may report this *entire* log,
+39 error including the npm and node versions, at:
+39 error     <http://github.com/npm/npm/issues>
+40 error System Darwin 14.1.0
+41 error command "node" "/usr/local/bin/npm" "install"
+42 error cwd /Users/vaibhavgarg/chatApp
+43 error node -v v0.10.31
+44 error npm -v 1.4.23
+45 verbose exit [ 1, true ]
